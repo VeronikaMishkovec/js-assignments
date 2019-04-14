@@ -30,7 +30,14 @@
  *
  */
 function getFizzBuzz(num) {
-    throw new Error('Not implemented');
+    // throw new Error('Not implemented');
+    if (num % 3 == 0 && num % 5 == 0) {
+        return 'FizzBuzz';
+    } else if (num % 3 == 0) {
+        return 'Fizz';
+    } else if (num % 5 == 0) {
+        return 'Buzz';
+    } else { return num; }
 }
 
 
@@ -46,7 +53,12 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-    throw new Error('Not implemented');
+    // throw new Error('Not implemented');
+    var res = 1;
+    for (let i = 1; i <= n; i++) {
+        res *= i;
+    }
+    return res;
 }
 
 
@@ -63,7 +75,12 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    throw new Error('Not implemented');
+    // throw new Error('Not implemented');
+    let sum = 0;
+    for (let i = n1; i <= n2; i++) {
+        sum += i;
+    }
+    return sum;
 }
 
 
@@ -81,8 +98,11 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(a,b,c) {
-    throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+    // throw new Error('Not implemented');
+    if (a + b > c && b + c > a && a + c > b) {
+        return true
+    } else { return false; }
 }
 
 
@@ -192,7 +212,23 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-    throw new Error('Not implemented');
+    // throw new Error('Not implemented');
+    let str = [];
+    str[2] = ", ";
+    if (isStartIncluded === true) {
+        str[0] = '[';
+    } else { str[0] = '('; }
+    if (isEndIncluded === true) {
+        str[4] = ']';
+    } else { str[4] = ')'; }
+    if (a > b) {
+        str[1] = b;
+        str[3] = a;
+    } else {
+        str[1] = a;
+        str[3] = b;
+    }
+    return str.join('');
 }
 
 
@@ -209,7 +245,8 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-    throw new Error('Not implemented');
+    // throw new Error('Not implemented');
+    return str.split('').reverse().join('');
 }
 
 
@@ -226,7 +263,9 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    throw new Error('Not implemented');
+    // throw new Error('Not implemented');
+    let str = String(num);
+    return +str.split('').reverse().join('');
 }
 
 
@@ -270,7 +309,22 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-    throw new Error('Not implemented');
+    // throw new Error('Not implemented');
+    let str = String(num);
+    let arr = str.split('');
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += +arr[i];
+    }
+    if (sum > 10) {
+        let buf = String(sum);
+        let temp = buf.split('');
+        let sum1 = 0;
+        for (let j = 0; j < temp.length; j++) {
+            sum1 += +temp[j];
+        }
+        return sum1;
+    } else { return sum; }
 }
 
 
@@ -357,6 +411,15 @@ function timespanToHumanString(startDate, endDate) {
  */
 function toNaryString(num, n) {
     throw new Error('Not implemented');
+    // let res = [];
+    // let buf = 0;
+    // while (num >= 1) {
+    //     buf = num % n;
+    //     res.push(buf);
+    //     num /= n;
+    // }
+
+    // return res.reverse().join('');
 }
 
 
@@ -443,15 +506,15 @@ module.exports = {
     doRectanglesOverlap: doRectanglesOverlap,
     isInsideCircle: isInsideCircle,
     findFirstSingleChar: findFirstSingleChar,
-    getIntervalString : getIntervalString,
+    getIntervalString: getIntervalString,
     reverseString: reverseString,
     reverseInteger: reverseInteger,
     isCreditCardNumber: isCreditCardNumber,
     getDigitalRoot: getDigitalRoot,
     isBracketsBalanced: isBracketsBalanced,
-    timespanToHumanString : timespanToHumanString,
+    timespanToHumanString: timespanToHumanString,
     toNaryString: toNaryString,
     getCommonDirectoryPath: getCommonDirectoryPath,
     getMatrixProduct: getMatrixProduct,
-    evaluateTicTacToePosition : evaluateTicTacToePosition
+    evaluateTicTacToePosition: evaluateTicTacToePosition
 };
